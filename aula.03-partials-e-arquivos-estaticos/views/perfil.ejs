@@ -1,0 +1,11 @@
+<%- include ('partials/navbar.ejs')%>
+<%- include ('partials/header.ejs')%>
+    <h1>Seja bem vindo a rota de Perfil!</h1>
+    <hr>
+    <h3>Cadastre-se!</h3>
+    <%= nome %>
+
+    <% if(!nome){ %>
+        <%= nome %>
+        <%}%>
+        <%- include ('partials/footer.ejs')%>

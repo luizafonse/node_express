@@ -9,6 +9,9 @@ const app = express();
 //definindo ejs como renderizador de páginas
 app.set("view engine", "ejs");
 
+//Definir a pasta dos arquivos estáticos (public)
+app.use(express.static("public"));
+
 //criando a rota principal
 app.get("/", (req, res) => {
   //res.send enviar mensagem na principal
