@@ -1,8 +1,15 @@
 <%- include ('partials/navbar.ejs')%>
 <%- include ('partials/header.ejs')%>
-    <h1>Bem vindo a videos!</h1>
-    <hr>
-    <h3>escolha um video para continuar!</h3>
-    <%= playlist %>
+<% if (playlist && !video) {%>
+    <h2>Você está na playlist de <%=playlist%></h2>
+  <%} else if(playlist && video){%>
 
+    <h2>Você está na playlist de </h2>
+    <%= playlist%>
+    <br>
+      Reproduzindo o vídeo
+      <%= video %>
+  <%}else{%>
+    <h1>Página de Vídeos, selecione uma playlist: </h1>
+    <%}%>
     <%- include ('partials/footer.ejs')%>

@@ -34,10 +34,12 @@ app.get("/perfil/:nome?", (req, res) => {
 
 //ROTA DE VÍDEOS
 //:playlist? e :video? parametros opcionais
-app.get("/videos/:playlist?", (req, res) => {
+app.get("/videos/:playlist?/:video?", (req, res) => {
   const playlist = req.params.playlist;
+  const video = req.params.video;
   res.render("videos", {
     playlist: playlist,
+    video: video,
   });
 });
 
