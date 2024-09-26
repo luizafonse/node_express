@@ -1,17 +1,46 @@
-import express from 'express'
-const router = express.Router()
+import express from "express";
+const router = express.Router();
+import Produto from "../models/Produto.js";
 
-// ROTA PRODUTOS
-router.get("/produtos", function(req,res){
-    const produtos = [
-        {nome: "Celular Motorola E22", preco: 1200, categoria: "Eletroportáteis"},
-        {nome: "Tablet Samsung", preco: 900, categoria: "Eletrônicos"},
-        {nome: "Notebook Lenovo", preco: 3200, categoria: "Computadores"},
-        {nome: "Fone Bluetooth", preco: 150, categoria: "Periféricos"}
-    ]
+router.get("/produtos", function (req, res) {
+  Produto.findAll().then((produtos) => {
     res.render("produtos", {
-        produtos: produtos
-    })
-})
+      produtos: produtos,
+    });
+  });
+});
 
-export default router
+
+router.post("/produtos/new", (req, res) => {
+  //recebendo os dados do formulario e gravando nas variaveis
+  const nomep = req.body.nomep;
+  const preco = req.body.preco;
+  const categoria = req.body.categoria;
+  Produto.create({
+    nomep: nomep,
+    preco: preco,
+    categoria: categoria,
+    //PROMISE (.then)
+  }).then(() => {
+    res.redirect("/produtos");
+  });
+});
+
+//Rota de exclusao
+//essa rota possui um parametro ID
+router.get("/produtos/delete/:id", (req, res) => {
+  //coletar o id que veio na url
+  const id = req.params.id;
+  //metodo para excluir
+  Produto.destroy({
+    where: {
+      id: id,
+    },
+  }).then(() => {
+      res.redirect("/produtos");
+    }).catch((error) => {
+      console.log(error);
+    });
+});
+
+export default router;

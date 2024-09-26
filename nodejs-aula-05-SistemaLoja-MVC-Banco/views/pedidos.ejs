@@ -4,13 +4,13 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h1>Pedidos</h1>
+                <h1>Cadastrar Pedidos</h1>
             </div>
             <div class="card-body">
                 <form action="/pedidos/new" method="post">
                     <label>Número do Pedido:</label>
                     <input
-                      type="text"
+                      type="number"
                       name="numero"
                       id="numero"
                       placeholder="Insira o número do Pedido"
@@ -25,6 +25,8 @@
                       placeholder="Insira o Valor do Pedido"
                       class="form-control"
                       required
+                      step="0.01" <%# Permite valores decimais  %>
+                      
                     />
                     <br />
                     <input type="submit" class="btn btn-success" value="Cadastrar" />
@@ -53,7 +55,7 @@
                       <tbody>
                         <% pedidos.forEach(pedido=> { %>
                         <tr>
-                          <td><img src="imgs/avatar.png" width="30px" /></td>
+                          <td><img src="imgs/order.png" width="30px" /></td>
                           <td><%= pedido.numero %></td>
                           <td><%= pedido.valor %></td>
                           <td><a style="color: orange" href="#">Editar</a></td>
