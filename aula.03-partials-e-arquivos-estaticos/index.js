@@ -43,7 +43,8 @@ app.get("/videos/:playlist?/:video?", (req, res) => {
   });
 });
 
-//rota de produtos
+//rota de produtos]
+
 app.get("/produtos/:produto?", (req, res) => {
   const listaProdutos = ["PC", "Tablet", "Notebook", "Celular", "Monitor"];
   const produto = req.params.produto;
